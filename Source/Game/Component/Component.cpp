@@ -1,74 +1,73 @@
 /////////////////////////////////////////////////////
-// Name : Game
+// Name : Component
 //
 // Author : 山田 聖弥
 //
-// Date : 2017/8/3
+// Day : 2017/8/3
 /////////////////////////////////////////////////////
-#include "Game.h"
-
-#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#include "Component.h"
 
 /////////////////////////////////////////////////////
-// Name : Game
+// Name : Component
 //
 // Over View : コンストラクタ
 //
 // Argument : 無し
 /////////////////////////////////////////////////////
-Game::Game()
+Component::Component()
+	:enabled_(true)
 {
+
 }
 
 /////////////////////////////////////////////////////
-// Name : ~Game
+// Name : ~Component
 //
 // Over View : デストラクタ
 //
 // Argument : 無し
 /////////////////////////////////////////////////////
-Game::~Game()
+Component::~Component()
 {
 }
 
 /////////////////////////////////////////////////////
-// Name : Initialize
+// Name : Run
 //
-// Over View : 初期化処理
+// Over View : 実行
 //
 // Argument : 無し
 //
 // Return : 無し
 /////////////////////////////////////////////////////
-void Game::Initialize()
+void Component::Run()
 {
-	GameBase::Initialize();
 }
 
 /////////////////////////////////////////////////////
-// Name : Update
+// Name : Enabled
 //
-// Over View : 更新処理
+// Over View : 使用フラグの変更
 //
-// Argument : 無し
+// Argument : 使用フラグ
 //
-// Return :  無し
+// Return : 無し
 /////////////////////////////////////////////////////
-void Game::Update()
+void Component::Enabled(bool enabled)
 {
-	GameBase::Update();
+	enabled_ = enabled;
 }
 
 /////////////////////////////////////////////////////
-// Name : Render
+// Name : Enabled
 //
-// Over View : 描画処理
+// Over View : 使用フラグの取得
 //
 // Argument : 無し
 //
-// Return :  無し
+// Return : 使用フラグ
 /////////////////////////////////////////////////////
-void Game::Render()
+bool Component::Enabled()
 {
-	GameBase::Render();
+	return enabled_;
 }
