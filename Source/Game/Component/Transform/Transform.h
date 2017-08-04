@@ -9,6 +9,7 @@
 
 #include <d3d11.h>
 #include <SimpleMath.h>
+#include <string>
 
 #include "../Component.h"
 
@@ -40,6 +41,9 @@ private:
 	//親の設定
 	Transform* parent_;
 
+	//コンポネントの名前
+	static std::string tag_;
+
 public:
 	Transform();
 	~Transform();
@@ -58,4 +62,10 @@ public:
 	//大きさ
 	void Scale(Math::Vector3 scale);
 	Math::Vector3 Scale();
+
+	//ワールド座標の取得
+	Math::Matrix World();
+
+	//タグの取得
+	static std::string Tag();
 };
