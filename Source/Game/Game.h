@@ -21,7 +21,9 @@ class GameObject;
 class Game:public GameBase
 {
 private:
-	GameObject* obj_;
+	std::shared_ptr<GameObject> obj_;
+	std::shared_ptr<GameObject> obj2_;
+	std::shared_ptr<GameObject> obj3_;
 
 public:
 	Game();

@@ -3,7 +3,7 @@
 //
 // Author : 山田 聖弥
 //
-// Day : 2017/8/3
+// Day : 2017/8/4
 /////////////////////////////////////////////////////
 #pragma once
 
@@ -48,6 +48,9 @@ public:
 	Transform();
 	~Transform();
 
+	//初期化処理
+	void Initialize(Math::Vector3 position, Math::Vector3 rotation, Math::Vector3 scale);
+
 	//更新処理
 	void Run() override;
 	
@@ -68,4 +71,8 @@ public:
 
 	//タグの取得
 	static std::string Tag();
+
+	//親
+	Transform* Parent();
+	void Parent(Transform* parent);
 };

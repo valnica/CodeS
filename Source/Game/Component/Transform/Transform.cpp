@@ -10,6 +10,8 @@
 
 __declspec(selectany) std::string Transform::tag_("Transform");
 
+#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+
 /////////////////////////////////////////////////////
 // Name : Transform
 //
@@ -33,6 +35,24 @@ Transform::Transform()
 /////////////////////////////////////////////////////
 Transform::~Transform()
 {
+}
+
+/////////////////////////////////////////////////////
+// Name : Initialize
+//
+// Over View : 初期化処理
+//
+// Argument : 無し
+//
+// Return : 無し
+/////////////////////////////////////////////////////
+void Transform::Initialize(Math::Vector3 position, Math::Vector3 rotation, Math::Vector3 scale)
+{
+	position_ = position;
+	rotation_ = rotation;
+	scale_ = scale;
+
+	Run();
 }
 
 /////////////////////////////////////////////////////
@@ -65,7 +85,7 @@ void Transform::Run()
 
 	//親子構造の計算
 	if (parent_)
-		world = localWorld_ * parent_->world_;
+		world_ = localWorld_ * parent_->world_;
 }
 
 /////////////////////////////////////////////////////
@@ -178,4 +198,14 @@ Math::Matrix Transform::World()
 std::string Transform::Tag()
 {
 	return tag_;
+}
+
+Transform * Transform::Parent()
+{
+	return parent_;
+}
+
+void Transform::Parent(Transform * parent)
+{
+	parent_ = parent;
 }

@@ -165,11 +165,6 @@ bool Graphics::CreateDevice(HWND windowHandle_)
 
 	context_->RSSetState(rasterizeState_.Get());
 
-	spriteBach_.reset(new DirectX::SpriteBatch(context_.Get()));
-	commonState_.reset(new DirectX::CommonStates(device_.Get()));
-	factory_.reset(new DirectX::DGSLEffectFactory(device_.Get()));
-	factory_->SetDirectory(L"Resources\\CMO");
-
 	return true;
 }
 

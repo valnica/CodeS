@@ -38,7 +38,7 @@ public:
 	GameBase();
 
 	//デストラクタ
-	~GameBase();
+	virtual ~GameBase();
 
 	//GameBaseのメイン関数
 	void Main(HINSTANCE hInstance, int nCmdShow);

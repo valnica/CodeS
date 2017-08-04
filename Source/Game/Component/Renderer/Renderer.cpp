@@ -1,75 +1,66 @@
 /////////////////////////////////////////////////////
-// Name : Component
+// Name : Renderer
 //
 // Author : 山田 聖弥
 //
-// Day : 2017/8/3
+// Day : 2017/8/4
 /////////////////////////////////////////////////////
-#include "Component.h"
+#include "Renderer.h"
+#include "../Transform/Transform.h"
+#include "../../RendererManager/RendererManager.h"
 
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 
 /////////////////////////////////////////////////////
-// Name : Component
+// Name : Renderer
 //
 // Over View : コンストラクタ
 //
 // Argument : 無し
 /////////////////////////////////////////////////////
-Component::Component()
-	:enabled_(true)
+Renderer::Renderer()
 {
-
 }
 
 /////////////////////////////////////////////////////
-// Name : ~Component
+// Name : ~Renderer
 //
 // Over View : デストラクタ
 //
 // Argument : 無し
 /////////////////////////////////////////////////////
-Component::~Component()
+Renderer::~Renderer()
 {
+	transform_ = nullptr;
 }
 
 /////////////////////////////////////////////////////
-// Name : Run
+// Name : Initialize
 //
-// Over View : 実行
+// Over View : 初期化処理
+//
+// Argument : transform
+//
+// Return : 無し
+/////////////////////////////////////////////////////
+void Renderer::Initialize(Transform * transform)
+{
+	transform_ = transform;
+}
+
+/////////////////////////////////////////////////////
+// Name : Update
+//
+// Over View : 更新処理
 //
 // Argument : 無し
 //
 // Return : 無し
 /////////////////////////////////////////////////////
-void Component::Run()
+void Renderer::Run()
 {
-}
+	if (!enabled_) return;
 
-/////////////////////////////////////////////////////
-// Name : Enabled
-//
-// Over View : 使用フラグの変更
-//
-// Argument : 使用フラグ
-//
-// Return : 無し
-/////////////////////////////////////////////////////
-void Component::Enabled(bool enabled)
-{
-	enabled_ = enabled;
-}
-
-/////////////////////////////////////////////////////
-// Name : Enabled
-//
-// Over View : 使用フラグの取得
-//
-// Argument : 無し
-//
-// Return : 使用フラグ
-/////////////////////////////////////////////////////
-bool Component::Enabled()
-{
-	return enabled_;
+	//レンダーマネージャーにエントリー
+	RendererManager::GetInstance()->Entry(this);
 }

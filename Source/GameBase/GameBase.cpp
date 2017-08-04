@@ -9,6 +9,7 @@
 #include "../Game/Game.h"
 #include "Window\Window.h"
 #include "../GameBase/Graphics/Graphics.h"
+#include "../Game/ResourceManager/ResourceManager.h"
 #include "Timer\Timer.h"
 #include "InputManager\InputManager.h"
 
@@ -75,6 +76,7 @@ GameBase::GameBase()
 /////////////////////////////////////////////////////
 GameBase::~GameBase()
 {
+	int a = 0;
 }
 
 /////////////////////////////////////////////////////
@@ -89,7 +91,7 @@ GameBase::~GameBase()
 void GameBase::Main(HINSTANCE instanceHandle, int nCmdShow)
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	
+
 	//fps管理クラス
 	std::unique_ptr<Timer> timer;
 	timer.reset(new Timer(60));
@@ -143,14 +145,15 @@ void GameBase::Main(HINSTANCE instanceHandle, int nCmdShow)
 			//バッファのクリア
 			Graphics::GetInstance()->ClearBuffer();
 
+			ResourceManager::GetInstance()->SpriteBatch()->Begin(DirectX::SpriteSortMode_BackToFront, ResourceManager::GetInstance()->CommonState()->NonPremultiplied(), ResourceManager::GetInstance()->CommonState()->PointClamp());
+			
 			//描画処理
 			Render();
 
-			Graphics::GetInstance()->SpriteBatch()->Begin(DirectX::SpriteSortMode_BackToFront, Graphics::GetInstance()->CommonState()->NonPremultiplied(), Graphics::GetInstance()->CommonState()->PointClamp());
 			// fpsの表示
-			spriteFont->DrawString(Graphics::GetInstance()->SpriteBatch().get(), buf, DirectX::SimpleMath::Vector2(0, 0));
-			spriteFont->DrawString(Graphics::GetInstance()->SpriteBatch().get(), buf2, DirectX::SimpleMath::Vector2(0, 20));
-			Graphics::GetInstance()->SpriteBatch()->End();
+			spriteFont->DrawString(ResourceManager::GetInstance()->SpriteBatch().get(), buf, DirectX::SimpleMath::Vector2(0, 0));
+			spriteFont->DrawString(ResourceManager::GetInstance()->SpriteBatch().get(), buf2, DirectX::SimpleMath::Vector2(0, 20));
+			ResourceManager::GetInstance()->SpriteBatch()->End();
 
 			// バックバッファとフロントバッファを入れ替える
 			Graphics::GetInstance()->Present();

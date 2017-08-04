@@ -14,7 +14,7 @@
 /////////////////////////////////////////////////////
 class Component
 {
-private:
+protected:
 	bool enabled_;
 
 public:

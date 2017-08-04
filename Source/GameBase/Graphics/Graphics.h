@@ -10,10 +10,6 @@
 #include <memory>
 #include <d3d11.h>
 #include <wrl.h>
-#include <SimpleMath.h>
-#include <SpriteBatch.h>
-#include <CommonStates.h>
-#include <Effects.h>
 
 #include "../Utility/Singleton/Singleton.h"
 
@@ -50,15 +46,6 @@ private:
 	//ラスタライズステート
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizeState_;
 
-	//スプライトバッチ
-	std::shared_ptr<DirectX::SpriteBatch> spriteBach_;
-
-	//コモンステート
-	std::shared_ptr<DirectX::CommonStates> commonState_;
-
-	//エフェクトファクトリー
-	std::shared_ptr<DirectX::DGSLEffectFactory> factory_;
-
 	//コンストラクタ
 	Graphics();
 
@@ -82,20 +69,5 @@ public:
 
 	//コンテキストの取得
 	ID3D11DeviceContext* Context();
-
-	std::shared_ptr<DirectX::SpriteBatch> SpriteBatch()
-	{
-		return spriteBach_;
-	}
-
-	std::shared_ptr<DirectX::CommonStates> CommonState()
-	{
-		return commonState_;
-	}
-
-	std::shared_ptr<DirectX::DGSLEffectFactory> Factory()
-	{
-		return factory_;
-	}
 };
 

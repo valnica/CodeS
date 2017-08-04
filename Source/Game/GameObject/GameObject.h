@@ -26,8 +26,6 @@ protected:
 	std::unordered_map<std::string, std::shared_ptr<Component>> component_;
 	Transform* transform_;
 
-	std::unique_ptr<DirectX::Model> model_;
-
 public:
 	//コンストラクタ
 	GameObject();
