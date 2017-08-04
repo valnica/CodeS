@@ -13,6 +13,7 @@
 #include <SimpleMath.h>
 #include <SpriteBatch.h>
 #include <CommonStates.h>
+#include <Effects.h>
 
 #include "../Utility/Singleton/Singleton.h"
 
@@ -55,6 +56,9 @@ private:
 	//コモンステート
 	std::shared_ptr<DirectX::CommonStates> commonState_;
 
+	//エフェクトファクトリー
+	std::shared_ptr<DirectX::DGSLEffectFactory> factory_;
+
 	//コンストラクタ
 	Graphics();
 
@@ -87,6 +91,11 @@ public:
 	std::shared_ptr<DirectX::CommonStates> CommonState()
 	{
 		return commonState_;
+	}
+
+	std::shared_ptr<DirectX::DGSLEffectFactory> Factory()
+	{
+		return factory_;
 	}
 };
 

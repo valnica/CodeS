@@ -11,6 +11,7 @@
 
 #include "../GameBase/GameBase.h"
 
+class GameObject;
 
 /////////////////////////////////////////////////////
 // Name : Game
@@ -20,6 +21,7 @@
 class Game:public GameBase
 {
 private:
+	GameObject* obj_;
 
 public:
 	Game();

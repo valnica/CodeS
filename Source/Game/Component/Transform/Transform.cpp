@@ -8,6 +8,8 @@
 #include "Transform.h"
 #include "../../../GameBase/Define/Define.h"
 
+__declspec(selectany) std::string Transform::tag_("Transform");
+
 /////////////////////////////////////////////////////
 // Name : Transform
 //
@@ -16,7 +18,9 @@
 // Argument : 無し
 /////////////////////////////////////////////////////
 Transform::Transform()
-	:Component()
+	:Component(), position_(Math::Vector3::Zero)
+	,rotation_(Math::Vector3::Zero),scale_(Math::Vector3(1.0f,1.0f,1.0f))
+	,parent_(nullptr)
 {
 }
 
@@ -26,8 +30,6 @@ Transform::Transform()
 // Over View : デストラクタ
 //
 // Argument : 無し
-//
-// Return : 無し
 /////////////////////////////////////////////////////
 Transform::~Transform()
 {
@@ -148,4 +150,32 @@ void Transform::Scale(Math::Vector3 scale)
 Math::Vector3 Transform::Scale()
 {
 	return scale_;
+}
+
+/////////////////////////////////////////////////////
+// Name : World
+//
+// Over View : ワールドマトリクスの取得
+//
+// Argument : 無し
+//
+// Return : ワールドマトリクス
+/////////////////////////////////////////////////////
+Math::Matrix Transform::World()
+{
+	return world_;
+}
+
+/////////////////////////////////////////////////////
+// Name : Tag
+//
+// Over View : タグの取得
+//
+// Argument : 無し
+//
+// Return : ワールドマトリクス
+/////////////////////////////////////////////////////
+std::string Transform::Tag()
+{
+	return tag_;
 }

@@ -6,6 +6,7 @@
 // Date : 2017/8/3
 /////////////////////////////////////////////////////
 #include "Game.h"
+#include "GameObject\GameObject.h"
 
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 
@@ -43,6 +44,8 @@ Game::~Game()
 void Game::Initialize()
 {
 	GameBase::Initialize();
+
+	obj_ = new GameObject;
 }
 
 /////////////////////////////////////////////////////
@@ -70,5 +73,7 @@ void Game::Update()
 /////////////////////////////////////////////////////
 void Game::Render()
 {
+	obj_->Update();
+
 	GameBase::Render();
 }

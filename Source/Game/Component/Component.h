@@ -15,7 +15,6 @@
 class Component
 {
 private:
-
 	bool enabled_;
 
 public:
