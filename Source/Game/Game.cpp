@@ -12,6 +12,8 @@
 #include "Component/Renderer/ModelRenderer/ModelRenderer.h"
 #include "Component/Renderer/SpriteRenderer/SpriteRenderer.h"
 #include "Component\Transform\Transform.h"
+#include "Camera\Camera.h"
+#include "../GameBase/Window/Window.h"
 
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 
@@ -91,6 +93,14 @@ void Game::Initialize()
 	}
 
 	obj2_->GetComponent<Transform>(Transform::Tag())->Position(Math::Vector3(600, 200,0));
+
+	auto window = Window::Handle();
+	RECT rc;
+	GetWindowRect(window,&rc);
+
+	camera_.reset(new Camera);
+	camera_->Initialize(Math::Vector3(0.0f,0.0f,5.0f),Math::Vector3(0.0f, 1.0f, 0.0f), 45, rc.right - rc.left, rc.bottom - rc.top, 0.1f, 1000);
+	camera_->Main(camera_);
 }
 
 /////////////////////////////////////////////////////
@@ -107,6 +117,8 @@ void Game::Update()
 	obj_->Update();
 	obj2_->Update();
 	obj3_->Update();
+
+	camera_->Update();
 
 	GameBase::Update();
 }

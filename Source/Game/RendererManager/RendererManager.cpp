@@ -7,6 +7,7 @@
 /////////////////////////////////////////////////////
 #include "RendererManager.h"
 #include "../Component/Renderer/Renderer.h"
+#include "../Camera/Camera.h"
 
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 
@@ -45,8 +46,8 @@ RendererManager::~RendererManager()
 /////////////////////////////////////////////////////
 void RendererManager::Render()
 {
-	auto view = Math::Matrix::CreateLookAt(Math::Vector3(0, 3, 5), Math::Vector3(0, 0, 0), Math::Vector3(0, 1, 0));
-	auto proj = Math::Matrix::CreatePerspectiveFieldOfView(45, 1280.0f / 720.0f, 0.1, 1000);
+	auto view = Camera::Main()->View();
+	auto proj = Camera::Main()->Proj();
 
 	for each(auto renderer in renderer_)
 	{

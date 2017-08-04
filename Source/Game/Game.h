@@ -12,6 +12,7 @@
 #include "../GameBase/GameBase.h"
 
 class GameObject;
+class Camera;
 
 /////////////////////////////////////////////////////
 // Name : Game
@@ -24,6 +25,7 @@ private:
 	std::shared_ptr<GameObject> obj_;
 	std::shared_ptr<GameObject> obj2_;
 	std::shared_ptr<GameObject> obj3_;
+	std::shared_ptr<Camera> camera_;
 
 public:
 	Game();
