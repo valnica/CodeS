@@ -6,8 +6,8 @@
 // Day : 2017/8/4
 /////////////////////////////////////////////////////
 #include "Camera.h"
-#include "../Component/Transform/Transform.h"
-#include "../../GameBase/Define/Define.h"
+#include "../../Component/Transform/Transform.h"
+#include "../../../GameBase/Define/Define.h"
 
 std::shared_ptr<Camera> Camera::mainCamera_ = nullptr;
 

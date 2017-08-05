@@ -1,0 +1,91 @@
+/////////////////////////////////////////////////////
+// Name : PlayScene
+//
+// Author : 山田 聖弥
+//
+// Day : 2017/8/5
+/////////////////////////////////////////////////////
+#include "PlayScene.h"
+#include "../../GameObject/GameObject.h"
+#include "../../Component/Transform/Transform.h"
+#include "../../Component/Renderer/ModelRenderer/ModelRenderer.h"
+
+/////////////////////////////////////////////////////
+// Name : PlayScene
+//
+// Over View : コンストラクタ
+//
+// Argument : 無し
+/////////////////////////////////////////////////////
+PlayScene::PlayScene()
+{
+	obj_.reset(new GameObject);
+}
+
+/////////////////////////////////////////////////////
+// Name : ~PlayScene
+//
+// Over View : デストラクタ
+//
+// Argument : 無し
+/////////////////////////////////////////////////////
+PlayScene::~PlayScene()
+{
+}
+
+/////////////////////////////////////////////////////
+// Name : Input
+//
+// Over View : シーン遷移
+//
+// Argument : 無し
+//
+// Return : 次のシーンのポインタ
+/////////////////////////////////////////////////////
+std::shared_ptr<Scene> PlayScene::Input()
+{
+	return nullptr;
+}
+
+/////////////////////////////////////////////////////
+// Name : Initialize
+//
+// Over View : 初期化処理
+//
+// Argument : 無し
+//
+// Return : 無し
+/////////////////////////////////////////////////////
+void PlayScene::Initialize()
+{
+	obj_->AddComponent<ModelRenderer>(ModelRenderer::Tag());
+	obj_->GetComponent<ModelRenderer>(ModelRenderer::Tag())->Initialize(obj_->GetComponent<Transform>(Transform::Tag()), L"Resources\\CMO\\Ball.cmo");
+}
+
+/////////////////////////////////////////////////////
+// Name : Update
+//
+// Over View : 更新処理
+//
+// Argument : 無し
+//
+// Return : 無し
+/////////////////////////////////////////////////////
+void PlayScene::Update()
+{
+	obj_->Update();
+}
+
+/////////////////////////////////////////////////////
+// Name : Render
+//
+// Over View : 描画処理
+//
+// Argument : 無し
+//
+// Return : 無し
+/////////////////////////////////////////////////////
+void PlayScene::Render()
+{
+	Scene::Render();
+}

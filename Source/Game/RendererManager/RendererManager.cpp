@@ -7,7 +7,7 @@
 /////////////////////////////////////////////////////
 #include "RendererManager.h"
 #include "../Component/Renderer/Renderer.h"
-#include "../Camera/Camera.h"
+#include "../GameObject/Camera/Camera.h"
 
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 
@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////
 RendererManager::RendererManager()
 {
-	renderer_.clear();
+	Clear();
 }
 
 /////////////////////////////////////////////////////
@@ -32,7 +32,7 @@ RendererManager::RendererManager()
 /////////////////////////////////////////////////////
 RendererManager::~RendererManager()
 {
-	renderer_.clear();
+	Clear();
 }
 
 /////////////////////////////////////////////////////
@@ -54,7 +54,7 @@ void RendererManager::Render()
 		renderer->Render(view, proj);
 	}
 
-	renderer_.clear();
+	Clear();
 }
 
 /////////////////////////////////////////////////////
@@ -69,4 +69,18 @@ void RendererManager::Render()
 void RendererManager::Entry(Renderer * renderer)
 {
 	renderer_.push_back(renderer);
+}
+
+/////////////////////////////////////////////////////
+// Name : Clear
+//
+// Over View : “o˜^‚ÌƒŠƒZƒbƒg
+//
+// Argument : –³‚µ
+//
+// Return : –³‚µ
+/////////////////////////////////////////////////////
+void RendererManager::Clear()
+{
+	renderer_.clear();
 }

@@ -9,7 +9,7 @@
 
 #include <d3d11.h>
 #include <SimpleMath.h>
-#include "../GameObject/GameObject.h"
+#include "../GameObject.h"
 
 namespace Math = DirectX::SimpleMath;
 

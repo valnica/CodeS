@@ -33,5 +33,8 @@ public:
 
 	//Renderer‚Ì“o˜^
 	void Entry(Renderer* renderer);
+
+	//“o˜^‚ÌƒŠƒZƒbƒg
+	void Clear();
 };
 

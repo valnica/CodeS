@@ -1,36 +1,43 @@
 /////////////////////////////////////////////////////
-// Name : Game
+// Name : PlayScene
 //
 // Author : 山田 聖弥
 //
-// Day : 2017/8/3
+// Day : 2017/8/5
 /////////////////////////////////////////////////////
 #pragma once
 
-#include <memory>
+#include "../Scene.h"
 
-#include "../GameBase/GameBase.h"
-
-class Camera;
-class Scene;
+class GameObject;
 
 /////////////////////////////////////////////////////
-// Name : Game
+// Name : PlayScene
 //
-// Over View : ゲームクラス
+// Over View : プレイシーン
 /////////////////////////////////////////////////////
-class Game:public GameBase
+class PlayScene:public Scene
 {
 private:
-	std::shared_ptr<Scene> scene_;
-	std::shared_ptr<Camera> camera_;
+	std::shared_ptr<GameObject> obj_;
 
 public:
-	Game();
-	~Game();
+	//コンストラクタ
+	PlayScene();
 
+	//デストラクタ
+	~PlayScene();
+
+	//シーン遷移
+	std::shared_ptr<Scene> Input() override;
+
+	//初期化処理
 	void Initialize() override;
+	
+	//更新処理
 	void Update() override;
+	
+	//描画処理
 	void Render() override;
 };
 
